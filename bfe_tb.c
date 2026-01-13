@@ -10,7 +10,7 @@
 //   != 0 -> sign extend
 //
 #ifndef missing_bits_behaviour
-# define missing_bits_behaviour  0
+# define missing_bits_behaviour  1
 #endif
 
 //
@@ -129,6 +129,7 @@ int main(void)
   do_one(0b0110100101100101ul, 4,13);
   do_one(0b1111111111111111ul, 5, 3);
   do_one(0b1111111111111111ul, 4,13);
+  do_one(0x8000ul, 4, 13);
   printf(
     "    -- wait for ever"                                                        "\n"
     "    wait;"                                                                   "\n"

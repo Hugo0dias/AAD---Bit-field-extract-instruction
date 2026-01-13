@@ -1,0 +1,7 @@
+v 4
+file . "comparator_n.vhd" "12ed83ede826c3d887a901ef927aa191b8942c4a" "20260113163407.441":
+  entity comparator_n at 19( 720) + 0 on 11;
+  architecture behavioral of comparator_n at 33( 1044) + 0 on 12;
+file . "comparator_n_tb.vhd" "7a3f7e5809e0e6cf95c3d347a559081c30ac190e" "20260113163407.441":
+  entity comparator_n_tb at 5( 46) + 0 on 13;
+  architecture stimulus of comparator_n_tb at 12( 164) + 0 on 14;

@@ -21,29 +21,31 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 entity comparator_n is
-  generic
-  (
-    N : positive
-  );
-  port
-  (
-    a  : in  std_logic_vector(N-1 downto 0);
-    b  : in  std_logic_vector(N-1 downto 0);
-    lt : out std_logic; -- '1' if a<b, '0' otherwise
-    eq : out std_logic; -- '1' if a=b, '0' otherwise
-    gt : out std_logic  -- '1' if a>b, '0' otherwise
+  generic ( N : integer := 4 );
+  port (
+    a, b : in  std_logic_vector(N-1 downto 0);
+    lt   : out std_logic;
+    eq   : out std_logic;
+    gt   : out std_logic  -- Adicionado para resolver o erro do TB
   );
 end comparator_n;
 
 architecture behavioral of comparator_n is
-  signal s_lt : std_logic;
-  signal s_eq : std_logic;
-  signal s_gt : std_logic;
+  signal s_lt, s_eq, s_gt : std_logic_vector(N downto 0);
 begin
-  s_lt <= '1' when unsigned(a) < unsigned(b) else '0';
-  s_eq <= '1' when          a  =          b  else '0';
-  s_gt <= '1' when unsigned(a) > unsigned(b) else '0';
-  lt <= transport s_lt after (10+2*N)*ps;
-  eq <= transport s_eq after (10    )*ps; -- smaller time penalty because comparison for equality is simpler
-  gt <= transport s_gt after (10+2*N)*ps;
+  -- Condições iniciais no MSB (bit N)
+  s_lt(N) <= '0';
+  s_eq(N) <= '1';
+  s_gt(N) <= '0';
+
+  gen_comp: for i in N-1 downto 0 generate
+    -- Lógica com atraso de transporte de 5ps conforme enunciado
+    s_lt(i) <= (s_lt(i+1) or (s_eq(i+1) and (not a(i) and b(i)))) after 5 ps;
+    s_eq(i) <= (s_eq(i+1) and (a(i) xnor b(i))) after 5 ps;
+    s_gt(i) <= (s_gt(i+1) or (s_eq(i+1) and (a(i) and not b(i)))) after 5 ps;
+  end generate;
+
+  lt <= s_lt(0);
+  eq <= s_eq(0);
+  gt <= s_gt(0);
 end behavioral;

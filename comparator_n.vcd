@@ -1,0 +1,164 @@
+$date
+  Tue Jan 13 16:34:07 2026
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$scope module standard $end
+$upscope $end
+$scope module textio $end
+$upscope $end
+$scope module std_logic_1164 $end
+$upscope $end
+$scope module numeric_std $end
+$upscope $end
+$scope module comparator_n_tb $end
+$var reg 4 ! s_a[3:0] $end
+$var reg 4 " s_b[3:0] $end
+$var reg 1 # s_lt $end
+$var reg 1 $ s_eq $end
+$var reg 1 % s_gt $end
+$scope module uut $end
+$var reg 4 & a[3:0] $end
+$var reg 4 ' b[3:0] $end
+$var reg 1 ( lt $end
+$var reg 1 ) eq $end
+$var reg 1 * gt $end
+$var reg 5 + s_lt[4:0] $end
+$var reg 5 , s_eq[4:0] $end
+$var reg 5 - s_gt[4:0] $end
+$scope module gen_comp(0) $end
+$upscope $end
+$scope module gen_comp(1) $end
+$upscope $end
+$scope module gen_comp(2) $end
+$upscope $end
+$scope module gen_comp(3) $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+b0010 !
+b0010 "
+U#
+U$
+U%
+b0010 &
+b0010 '
+U(
+U)
+U*
+b0UUUU +
+b1UUUU ,
+b0UUUU -
+#5000
+b00UUU +
+b11UUU ,
+b00UUU -
+#10000
+b000UU +
+b111UU ,
+b000UU -
+#15000
+b0000U +
+b1111U ,
+b0000U -
+#20000
+0#
+1$
+0%
+0(
+1)
+0*
+b00000 +
+b11111 ,
+b00000 -
+#200000
+b1011 !
+b0100 "
+b1011 &
+b0100 '
+#205000
+0$
+1%
+0)
+1*
+b00100 +
+b10000 ,
+b01011 -
+#210000
+b00010 +
+b01101 -
+#215000
+1#
+0%
+1(
+0*
+b00001 +
+b01110 -
+#220000
+0#
+1%
+0(
+1*
+b00000 +
+b01111 -
+#400000
+b0101 !
+b1010 "
+b0101 &
+b1010 '
+#405000
+b01000 +
+b00111 -
+#410000
+b01100 +
+b00011 -
+#415000
+b01110 +
+b00001 -
+#420000
+1#
+0%
+1(
+0*
+b01111 +
+b00000 -
+#600000
+b0111 !
+b0111 "
+b0111 &
+b0111 '
+#605000
+b00111 +
+b11000 ,
+#610000
+b00011 +
+b11100 ,
+#615000
+b00001 +
+b11110 ,
+#620000
+0#
+1$
+0(
+1)
+b00000 +
+b11111 ,
+#800000
+b1111 !
+b1110 "
+b1111 &
+b1110 '
+#805000
+0$
+1%
+0)
+1*
+b11110 ,
+b00001 -
+#1000000
