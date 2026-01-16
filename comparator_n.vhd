@@ -33,19 +33,19 @@ end comparator_n;
 architecture behavioral of comparator_n is
   signal s_lt, s_eq, s_gt : std_logic_vector(N downto 0);
 begin
-  -- Condições iniciais no MSB (bit N)
-  s_lt(N) <= '0';
-  s_eq(N) <= '1';
-  s_gt(N) <= '0';
+  -- Condições iniciais no LSB (bit 0)
+  s_lt(0) <= '0';
+  s_eq(0) <= '1';
+  s_gt(0) <= '0';
 
-  gen_comp: for i in N-1 downto 0 generate
+  gen_comp: for i in 0 to N-1 generate
     -- Lógica com atraso de transporte de 5ps conforme enunciado
-    s_lt(i) <= (s_lt(i+1) or (s_eq(i+1) and (not a(i) and b(i)))) after 5 ps;
-    s_eq(i) <= (s_eq(i+1) and (a(i) xnor b(i))) after 5 ps;
-    s_gt(i) <= (s_gt(i+1) or (s_eq(i+1) and (a(i) and not b(i)))) after 5 ps;
+    s_lt(i+1) <= (s_lt(i) or (s_eq(i) and (not a(i) and b(i)))) after 5 ps;
+    s_eq(i+1) <= (s_eq(i) and (a(i) xnor b(i))) after 5 ps;
+    s_gt(i+1) <= (s_gt(i) or (s_eq(i) and (a(i) and not b(i)))) after 5 ps;
   end generate;
 
-  lt <= s_lt(0);
-  eq <= s_eq(0);
-  gt <= s_gt(0);
+  lt <= s_lt(N);
+  eq <= s_eq(N);
+  gt <= s_gt(N);
 end behavioral;

@@ -106,6 +106,48 @@ begin
     wait for 499 ps;
     assert s_dst = s_expected report "bad dst" severity note;
     wait for 1 ps;
+    --- new test case
+    s_src      <= "0000000000000001";
+    s_size     <= "0000"; -- 0
+    s_start    <= "0000"; -- 0
+    s_variant  <= '0';
+    s_expected <= "0000000000000001";
+    wait for 499 ps;
+    assert s_dst = s_expected report "bad dst" severity note;
+    wait for 1 ps;
+    s_variant  <= '1';
+    s_expected <= "1111111111111111";
+    wait for 499 ps;
+    assert s_dst = s_expected report "bad dst" severity note;
+    wait for 1 ps;
+    --- new test case
+    s_src      <= "1000000000000000";
+    s_size     <= "0001"; -- 1
+    s_start    <= "1111"; -- 15
+    s_variant  <= '0';
+    s_expected <= "0000000000000011";
+    wait for 499 ps;
+    assert s_dst = s_expected report "bad dst" severity note;
+    wait for 1 ps;
+    s_variant  <= '1';
+    s_expected <= "1111111111111111";
+    wait for 499 ps;
+    assert s_dst = s_expected report "bad dst" severity note;
+    wait for 1 ps;
+    --- new test case
+    s_src      <= "0000000000000001";
+    s_size     <= "1111"; -- 15
+    s_start    <= "0000"; -- 0
+    s_variant  <= '0';
+    s_expected <= "0000000000000001";
+    wait for 499 ps;
+    assert s_dst = s_expected report "bad dst" severity note;
+    wait for 1 ps;
+    s_variant  <= '1';
+    s_expected <= "0000000000000001";
+    wait for 499 ps;
+    assert s_dst = s_expected report "bad dst" severity note;
+    wait for 1 ps;
     -- wait for ever
     wait;
   end process;

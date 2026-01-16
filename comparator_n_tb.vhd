@@ -49,6 +49,12 @@ begin
     s_a <= "1111";
     s_b <= "1110";
     wait for 200 ps;
+    s_a <= "0110";
+    s_b <= "1101";
+    wait for 200 ps;
+    s_a <= "1000";
+    s_b <= "0110";
+    wait for 200 ps;
     wait;
   end process;
 end stimulus;

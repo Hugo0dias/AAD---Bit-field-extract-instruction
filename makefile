@@ -6,7 +6,7 @@ comparator_n.vcd:
 	rm -f work-*.cf
 	ghdl -i --std=08 comparator_n.vhd comparator_n_tb.vhd
 	ghdl -m --std=08 comparator_n_tb
-	ghdl -r --std=08 comparator_n_tb --stop-time=1000ps --vcd=comparator_n.vcd
+	ghdl -r --std=08 comparator_n_tb --stop-time=1600ps --vcd=comparator_n.vcd
 	@echo use \"gtkwave comparator_n.vcd\" to see the simulation waveforms
 
 .PHONY:	barrel_shift_right.vcd

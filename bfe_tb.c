@@ -130,6 +130,9 @@ int main(void)
   do_one(0b1111111111111111ul, 5, 3);
   do_one(0b1111111111111111ul, 4,13);
   do_one(0x8000ul, 4, 13);
+  do_one(0b0000000000000001ul, 0, 0);
+  do_one(0b1000000000000000ul, 1, 15);
+  do_one(0b0000000000000001ul, 15, 0);
   printf(
     "    -- wait for ever"                                                        "\n"
     "    wait;"                                                                   "\n"
